@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống WebGIS & AI Dự Báo Khô Hạn TVDI</title>
+    <!-- CSS Leaflet & Custom CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- SIDEBAR DỰ BÁO AI -->
+    <div id="sidebar">
+        <h2>🤖 Dự Báo TVDI Trực Tuyến</h2>
+        
+        <div class="form-group">
+            <label>Chỉ số Thực vật (NDVI):</label>
+            <input type="number" id="input-ndvi" step="0.01" value="0.35" min="-0.2" max="1.0">
+        </div>
+        <div class="form-group">
+            <label>Nhiệt độ Bề mặt LST (°C):</label>
+            <input type="number" id="input-lst" step="0.1" value="36.5" min="20" max="45">
+        </div>
+        <div class="form-group">
+            <label>Tháng dự báo:</label>
+            <select id="input-month">
+                <option value="1">Tháng 1</option>
+                <option value="3" selected>Tháng 3 (Mùa khô đỉnh điểm)</option>
+                <option value="6">Tháng 6</option>
+                <option value="9">Tháng 9 (Mùa mưa)</option>
+            </select>
+        </div>
+        
+        <button onclick="predictTVDI()">Chạy Mô Hình AI (XGBoost)</button>
+
+        <div id="result-card">
+            <h4>Kết Quả Dự Báo:</h4>
+            <p style="margin-top:8px;">Giá trị TVDI dự báo: <strong id="tvdi-value">--</strong></p>
+            <span id="drought-badge" class="status-badge" style="background:#94a3b8;">Chờ tính toán...</span>
+        </div>
+    </div>
+
+    <!-- MAIN WEBGIS & DASHBOARD -->
+    <div id="main-content">
+        <!-- Bản đồ WebGIS Leaflet -->
+        <div id="map"></div>
+
+        <!-- Dashboard Biểu đồ -->
+        <div id="dashboard">
+            <div class="chart-box">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS & Logic JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
