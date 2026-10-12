@@ -1,0 +1,36 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { display: flex; height: 100vh; background-color: #f4f6f9; overflow: hidden; }
+
+/* Sidebar Điều khiển AI */
+#sidebar {
+    width: 360px;
+    background: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+h2 { font-size: 18px; color: #1e293b; border-bottom: 2px solid #3b82f6; padding-bottom: 8px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+label { font-size: 13px; font-weight: 600; color: #475569; }
+input, select, button { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; }
+input:focus, select:focus { outline: none; border-color: #3b82f6; }
+button { background: #2563eb; color: white; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; }
+button:hover { background: #1d4ed8; }
+
+/* Thẻ kết quả AI */
+#result-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; margin-top: 5px; }
+.status-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; color: white; font-weight: bold; font-size: 13px; margin-top: 8px; }
+
+/* Màn hình chính (Map & Charts) */
+#main-content { flex: 1; display: flex; flex-direction: column; height: 100vh; }
+#map { flex: 3; width: 100%; }
+#dashboard { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; background: #ffffff; border-top: 1px solid #e2e8f0; }
+.chart-box { background: #ffffff; border: 1px solid #f1f5f9; padding: 10px; border-radius: 8px; position: relative; }
+
+/* Legend Thang màu Chú giải */
+.legend { background: white; padding: 12px; border-radius: 6px; line-height: 18px; color: #333; font-size: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.15); }
+.legend-gradient { height: 12px; width: 100%; border-radius: 3px; margin: 6px 0; }
